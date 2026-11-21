@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794929058761,
+      "tag": "0000_sistema_matricula_asistencia",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794930358596,
+      "tag": "0001_fix_estudiantes_select_policy",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794931239516,
+      "tag": "0002_asistencia_qr",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794931335049,
+      "tag": "0003_hora_tardanza_0815",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794931874465,
+      "tag": "0004_libro_reclamos",
+      "breakpoints": true
+    }
+  ]
+}

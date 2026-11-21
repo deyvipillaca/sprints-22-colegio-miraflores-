@@ -1,0 +1,29 @@
+matriculas
+Limit  (cost=4.18..15.20 rows=1 width=20) (actual time=1.658..3.682 rows=8.00 loops=1)
+  Buffers: shared hit=297
+  ->  Bitmap Heap Scan on matriculas  (cost=4.18..15.20 rows=1 width=20) (actual time=1.645..3.643 rows=8.00 loops=1)
+        Recheck Cond: (estado = ANY ('{SOLICITADA,EN_REVISION,MATRICULADA}'::estado_matricula[]))
+        Filter: (puede_ver_estudiante((NULLIF(current_setting('request.jwt.claim.sub'::text, true), ''::text))::uuid, estudiante_id) AND (estado = 'MATRICULADA'::estado_matricula))
+        Heap Blocks: exact=1
+        Buffers: shared hit=297
+        ->  Bitmap Index Scan on matricula_unica_activa  (cost=0.00..4.17 rows=6 width=0) (actual time=0.032..0.032 rows=8.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=61
+Planning Time: 0.415 ms
+Execution Time: 3.802 ms
+
+asistencias
+Limit  (cost=0.15..8.43 rows=1 width=20) (actual time=0.006..0.008 rows=0.00 loops=1)
+  Buffers: shared hit=2
+  ->  Index Scan using asistencias_seccion_fecha on asistencias  (cost=0.15..8.43 rows=1 width=20) (actual time=0.004..0.005 rows=0.00 loops=1)
+        Index Cond: ((seccion_id = '9229ef4b-27b9-4ba0-853f-dc49646dd9d7'::uuid) AND (fecha = CURRENT_DATE))
+        Filter: puede_ver_matricula((NULLIF(current_setting('request.jwt.claim.sub'::text, true), ''::text))::uuid, matricula_id)
+        Index Searches: 1
+        Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=73 read=3
+Planning Time: 0.331 ms
+Execution Time: 0.024 ms
+
